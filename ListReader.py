@@ -1,12 +1,14 @@
 print("hellow")
 
 
-
-with open("rockyou.txt") as f:
+#word.replace('\n','') for word in f
+with open('testList.txt', 'r') as f:
     count = 0
     for word in f:
+        processed_word = word.rstrip('\n')
         count = count + 1
-        print(word)
+        print(processed_word)
+    print('\n' + "number of words:")
     print(count)    
 
 
