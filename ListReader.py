@@ -1,4 +1,4 @@
-print("hellow")
+print("hellow" + '\n')
 
 
 #word.replace('\n','') for word in f
@@ -11,6 +11,12 @@ with open('testList.txt', 'r') as f:
     print('\n' + "number of words:")
     print(count)    
 
+
+
+def makingWords():
+    print('\n' + "what am I doing?")
+
+makingWords()
 
 
 
