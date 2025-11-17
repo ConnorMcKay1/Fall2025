@@ -4,7 +4,7 @@ PasswordList = []
 PasswordLengthList = []
 
 #word.replace('\n','') for word in f
-with open('testList.txt', 'r') as f:
+with open("testList.txt", "r", encoding="utf-8", errors="ignore") as f:
     count = 0
     for word in f:
         processed_word = word.rstrip('\n')
@@ -22,12 +22,18 @@ def WordLength(Password_List, PasswordLengthList):
     return PasswordLengthList
 
 
-WordLength(PasswordList, PasswordLengthList)
-#print(PasswordLengthList)
-NumberOfPasswords = PasswordList.__len__()
-print("-----------------")
-print(NumberOfPasswords)
 
+# For somet reason this is the varaible that the visualization class uses
+# in the graphs
+#
+WordLength(PasswordList, PasswordLengthList)    #gets the character count for each password and makes a list of of them 
+#print(PasswordLengthList)
+print("-----------------")
+NumberOfPasswords = PasswordList.__len__()
+print(NumberOfPasswords)
+print("-----------------")
+MaxPasswordLength = max(PasswordLengthList)
+print(MaxPasswordLength)
 
 
 
