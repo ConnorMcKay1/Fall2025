@@ -4,7 +4,7 @@ PasswordList = []
 PasswordLengthList = []
 
 #word.replace('\n','') for word in f
-with open("testList.txt", "r", encoding="utf-8", errors="ignore") as f:
+with open("rockyou.txt", "r", encoding="utf-8", errors="ignore") as f:
     count = 0
     for word in f:
         processed_word = word.rstrip('\n')
