@@ -25,12 +25,13 @@ def BruteForce(PasswordList):
 
 TxtReader()  #populates the list in ListReader
 
-HashAlgorithm("\nbrazil\n")
+print('\n' + "Password trying to break  -- princess:" + '\n' + HashAlgorithm("princess"))
 
-BruteForce(PasswordList[:100])   #limits hashing to n
+BruteForce(PasswordList[:10])   #limits hashing to n
+                                 # NumberOfPassWords should print the whole 14m list
 
 print("\nFirst 100 hashed passwords:\n")
-for item in HashedPasswordList[:100]:
+for item in HashedPasswordList[:10]:
     print(item)
 
 

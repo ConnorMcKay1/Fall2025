@@ -31,7 +31,7 @@ def TxtReader():
 # WordLength(PasswordList, PasswordLengthList)    #gets the character count for each password and makes a list of of them 
 #print(PasswordLengthList)
 print("-----------------")
-# NumberOfPasswords = PasswordList.__len__()
+NumberOfPasswords = PasswordList.__len__()
 # print(NumberOfPasswords)
 print("-----------------")
 # MaxPasswordLength = max(PasswordLengthList)     #finds the max lenght password in the .txt file
