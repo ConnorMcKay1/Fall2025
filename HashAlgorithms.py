@@ -36,7 +36,9 @@ print("\nFirst 10 hashed passwords:\n")
 for item in HashedPasswordList[:10]:
     print(item)
     if item == wordToBreak:
-        print("GOT IT!!!")
+        print("GOT IT!!! --> " + item)
+        break
+
 
 #search the first 10 passwords of the list for what your looking for
 
