@@ -25,13 +25,18 @@ def BruteForce(PasswordList):
 
 TxtReader()  #populates the list in ListReader
 
-print('\n' + "Password trying to break  -- princess:" + '\n' + HashAlgorithm("princess"))
+
+wordToBreak = HashAlgorithm("iloveyou")
+print('\n' + "Password trying to break  -- iloveyou:" + '\n' + wordToBreak)
 
 BruteForce(PasswordList[:10])   #limits hashing to n
                                  # NumberOfPassWords should print the whole 14m list
 
-print("\nFirst 100 hashed passwords:\n")
+print("\nFirst 10 hashed passwords:\n")
 for item in HashedPasswordList[:10]:
     print(item)
+    if item == wordToBreak:
+        print("GOT IT!!!")
 
+#search the first 10 passwords of the list for what your looking for
 
