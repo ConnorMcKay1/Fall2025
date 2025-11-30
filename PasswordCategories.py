@@ -1,6 +1,15 @@
-from ListReader import TxtReader
+from ListReader import PasswordList, TxtReader
+from tqdm import tqdm
 
 import matplotlib.pyplot as plt
+import string
+
+
+TxtReader()
+passwords = PasswordList
+
+
+print("Loaded", len(passwords), "passwords")
 
 
 
@@ -10,7 +19,14 @@ def categorize_password(pw):
     has_digit = any(c.isdigit() for c in pw)
     has_symbol = any(not c.isalnum() for c in pw)
 
-    # Class E = unicode / emoji / extended ASCII
+    '''Class	Rule
+        A	    Only lowercase letters (a-z)
+        B	    Lowercase + digits (0-9) and no uppercase, no symbols
+        C	    Lower + upper + digits and no symbols
+        D	    Lower + upper + digits + symbols
+        E	    Contains unicode/emoji/extended ASCII (anything > ASCII 126)**
+    '''
+
     try:
         pw.encode('ascii')
         is_unicode = False
@@ -34,12 +50,15 @@ def compute_category_stats(password_list):
     counts = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0}
     total = len(password_list)
 
-    for pw in password_list:
+    for pw in tqdm(password_list, desc="Categorizing passwords", unit="pw"):
         cat = categorize_password(pw)
         counts[cat] += 1
 
     percentages = {k: (v / total * 100) for k, v in counts.items()}
     return counts, percentages
+
+
+counts, percentages = compute_category_stats(passwords)
 
 
 def plot_categories(counts, percentages):
@@ -68,6 +87,9 @@ def plot_categories(counts, percentages):
 
     plt.tight_layout()
     plt.show()
+
+
+plot_categories(counts, percentages)
 
 
 
