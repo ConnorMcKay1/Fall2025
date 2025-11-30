@@ -61,13 +61,23 @@ def compute_category_stats(password_list):
 counts, percentages = compute_category_stats(passwords)
 
 
+
 def plot_categories(counts, percentages):
     labels = list(counts.keys())
     values = [counts[l] for l in labels]
     pct_values = [percentages[l] for l in labels]
 
+    colors = {
+        'A': 'skyblue',
+        'B': 'lightgreen',
+        'C': 'orange',
+        'D': 'red',
+        'E': 'purple'
+    }
+    bar_colors = [colors[l] for l in labels]
+
     plt.figure(figsize=(10, 6))
-    bars = plt.bar(labels, values, color='skyblue')
+    bars = plt.bar(labels, values, color=bar_colors)
 
     plt.title("Password Complexity Classes", fontsize=14)
     plt.ylabel("Number of Passwords", fontsize=12)
@@ -84,6 +94,15 @@ def plot_categories(counts, percentages):
             fontsize=11,
             fontweight='bold'
         )
+
+    legend_labels = [
+        "A: Only lowercase letters (a-z)",
+        "B: Lowercase + digits (0-9), no uppercase, no symbols",
+        "C: Lower + upper + digits, no symbols",
+        "D: Lower + upper + digits + symbols",
+        "E: Unicode/emoji/extended ASCII"
+    ]
+    plt.legend(bars, legend_labels, title="Category Rules", fontsize=10)
 
     plt.tight_layout()
     plt.show()
