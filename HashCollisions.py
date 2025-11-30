@@ -4,6 +4,8 @@ import string
 from collections import Counter
 import matplotlib.pyplot as plt
 
+
+
 def random_salt(length):
     alphabet = string.ascii_letters + string.digits
     return ''.join(random.choice(alphabet) for _ in range(length))
@@ -13,7 +15,7 @@ def salted_hash(password, salt):
     h.update((password + salt).encode('utf-8'))
     return h.hexdigest()
 
-def collision_experiment(password, salt_length, trials=50000):
+def collision_experiment(password, salt_length, trials=50000):  # holds number of trials this runs
     hashes = []
 
     for _ in range(trials):
@@ -30,6 +32,8 @@ def collision_experiment(password, salt_length, trials=50000):
 salt_lengths = [1, 2, 3, 4, 6, 8, 12, 16]
 
 password = "tobby"  #   password adding salt to
+
+print('\n' + "---Salting ==> " + password + " <== with different lenght salts. Measuring the collision rate over 50,000 trials---" + '\n')
 
 results = []
 

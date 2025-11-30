@@ -3,6 +3,8 @@ import random
 import string
 import matplotlib.pyplot as plt
 
+#  once the salt space is large, collisions essentially stop happening
+
 def random_salt(length):
     alphabet = string.ascii_letters + string.digits
     return ''.join(random.choice(alphabet) for _ in range(length))
@@ -26,6 +28,14 @@ def simulate_unique_hashes(password, salt_length, max_users=50000, step=1000):
     return unique_counts
 
 #   simulation for different salt lengths
+'''
+4-char salt => 62^4 => 14.7 million possibilities
+
+6-char salt => 62^6 => 56 billion possibilities
+
+8-char salt => 62^8 => 218 trillion possibilities
+'''
+
 password = "tobby"
 salt_lengths = [1, 2, 4, 6, 8]
 max_users = 50000
@@ -33,11 +43,14 @@ step = 1000
 
 plt.figure(figsize=(10, 6))
 
+
+#creates an ordered pairs in a list (users, uniques)
 for sl in salt_lengths:
     results = simulate_unique_hashes(password, sl, max_users=max_users, step=step)
     users = [r[0] for r in results]
     uniques = [r[1] for r in results]
-    plt.plot(users, uniques, marker='o', label=f"{sl}-char salt")
+    print(results)
+    plt.plot(users, uniques, marker='o', alpha=0.5 ,label=f"{sl}-char salt")
 
 plt.xlabel("Number of Users")
 plt.ylabel("Number of Unique Hashes")
