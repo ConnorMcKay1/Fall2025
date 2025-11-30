@@ -33,12 +33,26 @@ BruteForce(PasswordList[:10])   #limits hashing to n
                                  # NumberOfPassWords should print the whole 14m list
 
 print("\nFirst 10 hashed passwords:\n")
+count = 0
 for item in HashedPasswordList[:10]:
     print(item)
+    count += 1
     if item == wordToBreak:
         print("GOT IT!!! --> " + item)
+        print("This is the index # :" + item)
         break
 
 
+
 #search the first 10 passwords of the list for what your looking for
+
+# unsalted :  tobby
+
+#salted    :  tobbyXytl
+#             tobbyjfCr
+#             tobbytdjT 
+
+
+
+
 

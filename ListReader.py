@@ -1,3 +1,4 @@
+
 print("hellow" + '\n')
 
 PasswordList = []
@@ -11,17 +12,18 @@ def TxtReader():
             count += 1
             #print(processed_word)
             PasswordList.append(processed_word)
-    print('\n' + "number of words:")
-    print(count)
-    #print(PasswordList)
+        print('\n' + "number of words:")
+        #print(count)
+        #print(PasswordList)
 
 
 
     #gets the length of every password in the .txt list
-# def WordLength(Password_List, PasswordLengthList):
-#     for word in Password_List:
-#         PasswordLengthList.append(len(word) - 1)
-#     return PasswordLengthList
+def WordLength(Password_List, PasswordLengthList):
+    for word in Password_List:
+        PasswordLengthList.append(len(word) - 1)
+    print("longest password length:")
+    return PasswordLengthList
 
 
 
@@ -31,11 +33,21 @@ def TxtReader():
 # WordLength(PasswordList, PasswordLengthList)    #gets the character count for each password and makes a list of of them 
 #print(PasswordLengthList)
 print("-----------------")
+TxtReader()
 NumberOfPasswords = PasswordList.__len__()
-# print(NumberOfPasswords)
+print(NumberOfPasswords)
 print("-----------------")
-# MaxPasswordLength = max(PasswordLengthList)     #finds the max lenght password in the .txt file
-# print(MaxPasswordLength)
+WordLength(PasswordList, PasswordLengthList)
+MaxPasswordLength = max(PasswordLengthList)     #finds the max lenght password in the .txt file
+print(MaxPasswordLength)
+
+print("   index/location of password:")
+IndexOfMaxPasswordLength = PasswordLengthList.index(MaxPasswordLength)
+print(IndexOfMaxPasswordLength)
+print("   longest password:")
+print(PasswordList[IndexOfMaxPasswordLength])
+
+
 
 
 
