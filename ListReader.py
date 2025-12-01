@@ -10,7 +10,7 @@ MaxPasswordLength = 0
 # -----------------------------------------------------------
 # Read a plaintext password list (e.g., rockyou.txt, crackstation)
 # -----------------------------------------------------------
-def TxtReader(filename="rockyou.txt"):
+def TxtReader(filename="crackstation.txt"):
     with open(filename, "r", encoding="utf-8", errors="ignore") as f:
         for word in f:
             processed_word = word.rstrip("\n")
