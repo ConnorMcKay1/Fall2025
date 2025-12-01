@@ -5,11 +5,12 @@ print("hellow\n")
 
 PasswordList = []
 PasswordLengthList = []
+MaxPasswordLength = 0
 
 # -----------------------------------------------------------
 # Read a plaintext password list (e.g., rockyou.txt, crackstation)
 # -----------------------------------------------------------
-def TxtReader(filename="crackstation.txt"):
+def TxtReader(filename="rockyou.txt"):
     with open(filename, "r", encoding="utf-8", errors="ignore") as f:
         for word in f:
             processed_word = word.rstrip("\n")
@@ -29,15 +30,16 @@ def WordLength(password_list, length_list):
 # Identify max-length password
 # -----------------------------------------------------------
 def MaxLengthInfo(password_list, length_list):
-    max_len = max(length_list)
-    index = length_list.index(max_len)
+    global MaxPasswordLength
+    MaxPasswordLength = max(length_list)
+    index = length_list.index(MaxPasswordLength)
     longest_pw = password_list[index]
 
-    print("Longest password length:", max_len)
+    print("Longest password length:", MaxPasswordLength)
     print("Index of longest password:", index)
     print("Longest password:", longest_pw)
 
-    return max_len, index, longest_pw
+    return MaxPasswordLength, index, longest_pw
 
 # -----------------------------------------------------------
 # Example usage
@@ -49,3 +51,4 @@ if __name__ == "__main__":
 
     WordLength(PasswordList, PasswordLengthList)
     MaxLengthInfo(PasswordList, PasswordLengthList)
+

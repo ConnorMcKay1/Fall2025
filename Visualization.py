@@ -1,4 +1,4 @@
-#from ListReader import *
+from ListReader import TxtReader, WordLength, MaxLengthInfo, PasswordList, PasswordLengthList, MaxPasswordLength
 # from HashCollisions import *
 import matplotlib.pyplot as plt
 import numpy as np
@@ -29,7 +29,7 @@ import numpy as np
 #  Just a ba basic plot, not filtered
 #*********************
 #**********************************************
-# x = np.arange(1, NumberOfPasswords + 1)
+# x = np.arange(1, len(PasswordList) + 1)
 # y = np.array(PasswordLengthList)
 
 # fig, ax = plt.subplots()
@@ -42,19 +42,26 @@ import numpy as np
 #  Distribution of Password Lengths
 #*********************
 #**********************************************
-# y = np.array(PasswordLengthList)
-# fig, ax = plt.subplots(figsize=(10, 6))
-# ax.hist(y, bins=range(1, MaxPasswordLength), edgecolor='black', alpha=0.7)
+    #from the ListReader class
+TxtReader()
+WordLength(PasswordList, PasswordLengthList)
+MaxLengthInfo(PasswordList, PasswordLengthList)
 
-# # Change labels to rockyou
-# ax.set_title("Distribution of Password Lengths (RockYou.txt unFiltered)", fontsize=14)
-# ax.set_xlabel("Amount of Passwords", fontsize=12)
-# ax.set_ylabel("Password Length (# of characters)", fontsize=12)
-# ax.set_xticks(range(0, MaxPasswordLength, 2))  # might need to change spacing
-# ax.grid(axis='y', linestyle='--', alpha=0.6)
 
-# plt.tight_layout()
-# plt.show()
+
+y = np.array(PasswordLengthList)
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.hist(y, bins=range(1, MaxPasswordLength), edgecolor='black', alpha=0.7)
+
+# Change labels to rockyou
+ax.set_title("Distribution of Password Lengths (RockYou.txt unFiltered)", fontsize=14)
+ax.set_xlabel("Amount of Passwords", fontsize=12)
+ax.set_ylabel("Password Length (# of characters)", fontsize=12)
+ax.set_xticks(range(0, len(PasswordList), 2))  # might need to change spacing
+ax.grid(axis='y', linestyle='--', alpha=0.6)
+
+plt.tight_layout()
+plt.show()
 #**********************************************
 #*********************
 
@@ -62,16 +69,16 @@ import numpy as np
 
 
 
-x = [r[0] for r in results]  # salt lengths
-y = [r[2] for r in results]  # collision rates
+# x = [r[0] for r in results]  # salt lengths
+# y = [r[2] for r in results]  # collision rates
 
-plt.plot(x, y, marker='o')
-plt.yscale('log')  # collisions drop fast
-plt.xlabel("Salt Length (characters)")
-plt.ylabel("Collision Rate (log scale)")
-plt.title("Salt Collision Probability vs. Salt Length")
-plt.grid(True)
-plt.show()
+# plt.plot(x, y, marker='o')
+# plt.yscale('log')  # collisions drop fast
+# plt.xlabel("Salt Length (characters)")
+# plt.ylabel("Collision Rate (log scale)")
+# plt.title("Salt Collision Probability vs. Salt Length")
+# plt.grid(True)
+# plt.show()
 
 
 

@@ -1,4 +1,4 @@
-from ListReader import *
+from ListReader import TxtReader, PasswordList
 import hashlib
 
 print("yippy " + '\n')
